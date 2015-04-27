@@ -5,4 +5,18 @@
 a {
   display: block;
   text-decoration: none;
+  color: #777;
+  font-weight: 200;
+}
+
+a:before {
+  content: "▸";
+  padding-right: 0.5em;
+  color: #ccc;
+  font-weight: 200;
+}
+
+a:hover,
+a:hover:before {
+  color: blue;
 }
