@@ -1,0 +1,58 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Element providing a table of contents for an article.
+
+##### Example
+
+  <article>
+    <table-of-contents></table-of-contents>
+    <header>
+      <h1>Article title</h1>
+    </header>
+    <section>
+      <h2>Section heading</h2>
+    </section>
+  </article>
+
+@element table-of-contents
+@blurb Element providing a table of contents for an article.
+@status alpha
+@homepage https://peerj.github.io/table-of-contents
+-->
+<polymer-element name="table-of-contents" attributes="indent">
+  <template>
+    <link rel="stylesheet" href="table-of-contents.css">
+
+    <template repeat="{{ sections }}">
+      <a href="{{ href }}" style="{{ style }}">{{ content }}</a>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      indent: 10,
+      domReady: function() {
+        var nodes = [];
+        var indent = this.indent;
+
+        Array.prototype.forEach.call(document.querySelectorAll('article > section'), function(node) {
+          Array.prototype.forEach.call(node.querySelectorAll('h2,h3,h4,h5,h6'), function(node) {
+            if (!node.id) {
+              node.id = node.textContent.toLowerCase().replace(/\W+/g, '-');
+            }
+
+            var level = node.nodeName.replace(/^H/, '') - 2;
+
+            nodes.push({
+              href: '#' + node.id,
+              content: node.innerHTML,
+              style: 'margin-left:' + level * indent + 'px',
+            });
+          });
+        });
+
+        this.sections = nodes;
+      }
+    });
+  </script>
+</polymer-element>
