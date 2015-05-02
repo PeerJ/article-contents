@@ -35,7 +35,10 @@ Element providing a table of contents for an article.
         var nodes = [];
         var indent = this.indent;
 
-        Array.prototype.forEach.call(document.querySelectorAll('article > section'), function(node) {
+        // the second selector is needed when not using native Shadow DOM
+        var sections = document.querySelectorAll('article > section, article > div > section');
+
+        Array.prototype.forEach.call(sections, function(node) {
           Array.prototype.forEach.call(node.querySelectorAll('h2,h3,h4,h5,h6'), function(node) {
             if (!node.id) {
               node.id = node.textContent.toLowerCase().replace(/\W+/g, '-');

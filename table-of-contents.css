@@ -18,5 +18,6 @@ a:before {
 
 a:hover,
 a:hover:before {
+  text-decoration: none;
   color: blue;
 }
