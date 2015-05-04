@@ -48,7 +48,7 @@ Element providing a table of contents for an article.
 
             nodes.push({
               href: '#' + node.id,
-              content: node.innerHTML,
+              content: node.textContent, // TODO: use innerHTML without escaping
               style: 'margin-left:' + level * indent + 'px',
             });
           });
