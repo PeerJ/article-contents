@@ -6,7 +6,7 @@ Element providing a table of contents for an article.
 ##### Example
 
   <article>
-    <table-of-contents></table-of-contents>
+    <article-contents></article-contents>
     <header>
       <h1>Article title</h1>
     </header>
@@ -15,14 +15,14 @@ Element providing a table of contents for an article.
     </section>
   </article>
 
-@element table-of-contents
+@element article-contents
 @blurb Element providing a table of contents for an article.
 @status alpha
-@homepage https://peerj.github.io/table-of-contents
+@homepage https://peerj.github.io/article-contents
 -->
-<polymer-element name="table-of-contents" attributes="indent">
+<polymer-element name="article-contents" attributes="indent">
   <template>
-    <link rel="stylesheet" href="table-of-contents.css">
+    <link rel="stylesheet" href="article-contents.css">
 
     <template repeat="{{ sections }}">
       <a href="{{ href }}" style="{{ style }}">{{ content }}</a>
